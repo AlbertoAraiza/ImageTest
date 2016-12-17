@@ -18,7 +18,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.etPass);
         email = (EditText) findViewById(R.id.etMail);
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.0.4/tutorial/")
+                .baseUrl("https://picou.000webhostapp.com/php/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -70,12 +69,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
                 List<Usuario> usuarios = response.body();
-                ((TextView) findViewById(R.id.tvMesage)).setText("Usuario 1: "+ usuarios.get(0).getUsername());
             }
 
             @Override
             public void onFailure(Call<List<Usuario>> call, Throwable t) {
-                ((TextView) findViewById(R.id.tvMesage)).setText("Error: " + t.getMessage());
             }
         });
 
@@ -129,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Picasso.with(foto.getContext()).load("localhost/tutorial/images/testing1234.jpg").into(foto);
+        Picasso.with(foto.getContext()).load("https://picou.000webhostapp.com/images/testing1234.jpg").into(foto);
 //        addBussiness.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
